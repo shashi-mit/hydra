@@ -181,21 +181,20 @@ def process_csv():
             
 
 def process_folder(parent_folder):
+    # create csv file to store the results
     with open("UCF101_results.csv", "w") as results:
         folders = os.listdir(parent_folder)
-        matches = 0;mismatches = 0
 
         for folder in folders:
-            #files = glob.glob(f"{foldername}/*.avi", recursive=True)
             files = glob.glob("./{}/{}/**/*.avi".format(parent_folder,folder), recursive=True)
-            #print("Total files: ",folder ,len(files))
-            # quit()
+            print("Total files: ",folder ,len(files))
             for n,video_file in enumerate(files):
                 try:
                     _,filename = os.path.split(video_file)
                     #print("[+] Processing video: ", video_file, n)
                     features_list = process_video(video_file)
                     sw_features = create_sliding_window(features_list)
+
                     # Predict the class of the video
                     preds = []
                     dtest = xgb.DMatrix(sw_features)
@@ -203,21 +202,12 @@ def process_folder(parent_folder):
                     combined_pred = np.mean(preds, axis=0)
                     max_class = le.inverse_transform([np.argmax(combined_pred)])[0]
                     max_prob = int(np.max(combined_pred) * 100)
-                    results.write(f"{filename},{max_class},{max_prob},{folder}\n")
-                    if max_class == folder:
-                        matches += 1
-                    else:
-                        mismatches += 1
 
-                    # tgt_folder = os.path.join('results3', max_class)
-                    # if not os.path.exists(tgt_folder):
-                    #     os.makedirs(tgt_folder)
-                    # tgt_filename = os.path.join(tgt_folder, "{}_{}_{}.mp4".format(max_class, max_prob, n))
-                    # shutil.move(video_file, tgt_filename)
+                    # Write the results to a csv file
+                    results.write(f"{filename},{max_class},{max_prob},{folder}\n")
                 except Exception as e:
                     print(e)
                     continue
-            print(f"Matches: {matches}, Mismatches: {mismatches}")
     return
 
 #process_csv()

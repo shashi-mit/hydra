@@ -1,3 +1,25 @@
+###
+#  * Copyright (c) 2024 Shashi Kant
+#  *
+#  * Permission is hereby granted, free of charge, to any person obtaining a copy
+#  * of this software and associated documentation files (the "Software"), to deal
+#  * in the Software without restriction, including without limitation the rights
+#  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+#  * copies of the Software, and to permit persons to whom the Software is
+#  * furnished to do so, subject to the following conditions:
+#  *
+#  * The above copyright notice and this permission notice shall be included in all
+#  * copies or substantial portions of the Software.
+#  *
+#  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+#  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+#  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+#  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+#  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+#  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+#  * SOFTWARE.
+
+
 import joblib
 import os
 import xgboost as xgb
@@ -9,9 +31,8 @@ import glob
 from sklearn.metrics import precision_score, recall_score, accuracy_score, classification_report
 import pprint as pp
 import numpy as np
-#from imblearn.over_sampling import SMOTE
 
-
+#sliding window implementation containing windowed-mean and including window size and offset
 def create_sliding_window2(descs):
     windowed_descs = []
     offsets = range(0, len(descs)-2)
@@ -29,6 +50,7 @@ def create_sliding_window2(descs):
                 pass
     return windowed_descs
 
+#sliding window implementation containing windowed-mean and only including window size
 def create_sliding_window(descs):
     windowed_descs = []
     #offsets = range(0, len(descs)-2)
@@ -46,6 +68,7 @@ def create_sliding_window(descs):
     return windowed_descs
 
 # List of joblib files containing the datasets
+# Load sliding window descriptors from pre-created sliding window joblib files
 def load_descs():
     X=[];y=[];y_dict={}
     subfolders = [f.path for f in os.scandir('./sw_descriptors') if f.is_dir()]
@@ -65,13 +88,8 @@ def load_descs():
 
 X,y,y_dict = load_descs()
 
-
+# print the class distribution
 pp.pprint(y_dict)
-#quit()
-
-# # print(set(y))
-
-# quit()
 
 # Encode labels
 label_encoder = LabelEncoder()
@@ -81,10 +99,7 @@ y_encoded = label_encoder.fit_transform(y)
 # Split the data into training and testing sets
 X_train, X_valid, y_train, y_valid = train_test_split(X, y_encoded, test_size=0.2, random_state=42)
 
-# smote = SMOTE()
-# X_train_res, y_train_res = smote.fit_resample(X_train, y_train)
-
-
+#adjust class weights to handle imbalanced classes
 weights = np.zeros_like(y_train)
 unique_classes = np.unique(y_train)
 for cls in unique_classes:
@@ -122,7 +137,7 @@ model = xgb.train(
     verbose_eval=True  # Optional: provide more verbose output
 )
 
-# Optionally, evaluate the model or perform further actions
+# evaluate the model or perform further actions
 print(f"[+] Training complete. Best iteration: {model.best_iteration}")
 # Prediction on validation data
 y_pred = model.predict(dvalid)
@@ -134,15 +149,16 @@ accuracy = accuracy_score(y_valid, y_pred_classes)
 precision = precision_score(y_valid, y_pred_classes, average='macro')  # 'macro' average for multiclass
 recall = recall_score(y_valid, y_pred_classes, average='macro')  # 'macro' average for multiclass
 
-print(f"[+] Training complete. Best iteration: {model.best_iteration}")
 print("[+] Validation Metrics:")
 print(f"    Accuracy: {accuracy:.4f}")
 print(f"    Precision: {precision:.4f}")
 print(f"    Recall: {recall:.4f}")
 
 # Optional: Detailed classification report
-print("\n[+] Detailed Classification Report:")
-print(classification_report(y_valid, y_pred_classes))
+# Note: This will provide detailed metrics for each class, in most cases, this would appear to overfit
+# however the results should speak for themselves when running against new data
+# print("\n[+] Detailed Classification Report:")
+# print(classification_report(y_valid, y_pred_classes))
 
 # Save the model
 model.save_model('./models/xgb_mc_model.json')

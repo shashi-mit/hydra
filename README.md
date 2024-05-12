@@ -24,20 +24,7 @@ pip install -r requirements.txt
 
 ## Usage
 To use Hydra in your project, follow these steps:
-```python
-from hydra import MultiHeadPredictor
-
-# Initialize the predictor
-predictor = MultiHeadPredictor()
-
-# Load your data
-data = load_data('your-dataset')
-
-# Train the model
-predictor.train(data)
-
-# Perform predictions
-predictions = predictor.predict(data)
+```
 ```
 
 ## Contributing

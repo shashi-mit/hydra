@@ -9,7 +9,6 @@ import glob
 from sklearn.metrics import precision_score, recall_score, accuracy_score, classification_report
 import pprint as pp
 import numpy as np
-from random import shuffle
 #from imblearn.over_sampling import SMOTE
 
 
@@ -55,12 +54,6 @@ def load_descs():
         print("[+] Processing: ", subfolder, len(jobfiles))
         for jobfile in jobfiles:
             win_descs = joblib.load(jobfile)
-            # shuffle(win_descs)
-            # if "falls" not in jobfile: #["falls","fall","lying_down"]:
-            #     win_descs = win_descs[:50]
-
-            #win_descs = create_sliding_window(descs)
-            #print("[+] Windowed descs: ", len(win_descs), len(descs))
             X.extend(win_descs)
             cname = os.path.basename(subfolder)
             y.extend([cname] * len(win_descs))

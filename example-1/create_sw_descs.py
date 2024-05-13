@@ -77,21 +77,14 @@ def load_descs():
 
         print("[+] Processing: ", subfolder, len(jobfiles))
         cname = 1
-        # if "Normal" in subfolder:
-        #     cname = 0
         for jobfile in jobfiles:
             try:
                 descs = joblib.load(jobfile)
-                # if cname == 0:
-                #     descs = descs
                 win_descs = create_sliding_window(descs)
                 _,filename = os.path.split(jobfile)
                 joblib.dump(win_descs, "{}/{}".format(tgt_folder, filename))
             except Exception as e:
                 print(e)
-            #print("[+] Windowed descs: ", len(win_descs), len(descs))
-            # X.extend(win_descs)
-            # y.extend([cname] * len(win_descs))
     return X,y
 
 X,y = load_descs()

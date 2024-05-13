@@ -58,7 +58,6 @@ le = joblib.load('models/label_encoder.job')
 
 def create_sliding_window(descs):
     windowed_descs = []
-    #offsets = range(0, len(descs)-2)
     win_sizes = range(2, len(descs))
     for ws in win_sizes:
         try:
@@ -68,7 +67,6 @@ def create_sliding_window(descs):
             windowed_data = np.append(win, d2_len)
             windowed_descs.append(windowed_data)
         except ValueError:
-            #print(f"Skipping window size {ws} due to incompatible shapes.")
             pass
     return windowed_descs
 

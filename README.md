@@ -12,7 +12,7 @@ Hydra is designed to tackle the limitations of traditional sequence-to-sequence 
 - **Integration of Predictive Coding**: Incorporates neuroscience-inspired predictive coding to enhance data processing efficiency.
 - **Lightweight and Efficient**: Optimized for performance, requiring less computational power than traditional models.
 - **Versatility**: Applicable to various data types including video, text, and more.
-- **Proven Effectiveness**: Tested on well-known datasets like UCF-101 and Kinetics-400 with promising results.
+- **Proven Effectiveness**: Tested on well-known datasets like UCF-101 with promising results.
 
 ## Installation
 To get started with Hydra, clone this repository and install the required packages:

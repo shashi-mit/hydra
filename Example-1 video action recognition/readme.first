@@ -1,0 +1,9 @@
+Note: My coding skills are rather rusty, and the code could use a better structure from an expert in coding.
+
+To run this code
+1. python create_clip_descs.py -> creates the CLIP descriptors for each video from the source and "pickles" those embeddings to a jobfile 
+2. python create_sw_descs.py -> creates sliding window descriptors from step#1 above and then writes those to a jobfile, encoding the window size and average (see paper for details). (Steps 1 & 2 are convenience methods)
+3. python train_xgb.py-> trains an xgboost model using the sliding window descriptors and uses early stopping, and saves model to disk
+4. python run_xgb.py -> runs model with fresh data
+
+Hopefully these are self-explanatory, feel free to ask on github issues if you have any questions and send a PR with ideas on better structuring the code.

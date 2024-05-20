@@ -1,9 +1,33 @@
-Note: My coding skills are rather rusty, and the code could use a better structure from an expert in coding.
+### Note
 
-To run this code
-1. python create_clip_descs.py -> creates the CLIP descriptors for each video from the source and "pickles" those embeddings to a jobfile 
-2. python create_sw_descs.py -> creates sliding window descriptors from step#1 above and then writes those to a jobfile, encoding the window size and average (see paper for details). (Steps 1 & 2 are convenience methods)
-3. python train_xgb.py-> trains an xgboost model using the sliding window descriptors and uses early stopping, and saves model to disk
-4. python run_xgb.py -> runs model with fresh data
+My coding skills are a bit rusty, and the code could benefit from a better structure from an expert in coding.
 
-Hopefully these are self-explanatory, feel free to ask on github issues if you have any questions and send a PR with ideas on better structuring the code.
+### To Run This Code
+
+1. **Generate CLIP Descriptors:**
+   ```bash
+   python create_clip_descs.py
+   ```
+   This script creates the CLIP descriptors for each video from the source and "pickles" those embeddings into a job file.
+
+2. **Generate Sliding Window Descriptors:**
+   ```bash
+   python create_sw_descs.py
+   ```
+   This script creates sliding window descriptors from the CLIP descriptors generated in step 1. It then writes these to a job file, encoding the window size and average (refer to the paper for more details). Steps 1 and 2 are convenience methods.
+
+3. **Train XGBoost Model:**
+   ```bash
+   python train_xgb.py
+   ```
+   This script trains an XGBoost model using the sliding window descriptors. It employs early stopping and saves the model to disk.
+
+4. **Run XGBoost Model:**
+   ```bash
+   python run_xgb.py
+   ```
+   This script runs the trained model with fresh data.
+
+### Notes
+
+Hopefully, these instructions are self-explanatory. If you have any questions, feel free to ask in the GitHub issues section. Additionally, you're welcome to send a PR with suggestions for better structuring the code.

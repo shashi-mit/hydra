@@ -14,18 +14,7 @@ Hydra is designed to tackle the limitations of traditional sequence-to-sequence 
 - **Versatility**: Applicable to various data types including video, text, and more.
 - **Proven Effectiveness**: Tested on well-known datasets like UCF-101 with promising results.
 
-## Installation
-To get started with Hydra, clone this repository and install the required packages:
-```bash
-git clone https://github.com/your-repository/hydra.git
-cd hydra
-pip install -r requirements.txt
-```
-
-## Usage
-To use Hydra in your project, follow these steps:
-```
-```
+Important: Please refer to readme.first file in both examples to run Hydra
 
 ## Contributing
 Contributions to Hydra are welcome! Please refer to the `CONTRIBUTING.md` file for guidelines on how to make contributions.

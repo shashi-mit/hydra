@@ -45,22 +45,41 @@ This README template provides a comprehensive overview of the Hydra project, inc
 
 Citations:
 [1] https://everhour.com/blog/github-readme-template/
+
 [2] https://github.com/topics/readme-template
+
 [3] https://www.frontiersin.org/articles/10.3389/fncom.2022.1062678/full
+
 [4] https://github.com/topics/awesome-readme-template
+
 [5] https://en.wikipedia.org/wiki/Neural_coding
+
 [6] https://gist.github.com/noperator/4eba8fae61a23dc6cb1fa8fbb9122d45
+
 [7] https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9074371/
+
 [8] https://huggingface.co/learn/nlp-course/en/chapter1/7
+
 [9] https://www.nature.com/articles/s41593-018-0200-7
+
 [10] https://pubmed.ncbi.nlm.nih.gov/32860285/
+
 [11] https://www.nature.com/articles/nn0199_79
+
 [12] https://github.com/othneildrew/Best-README-Template
+
 [13] https://blog.keras.io/a-ten-minute-introduction-to-sequence-to-sequence-learning-in-keras.html
+
 [14] http://d2l.ai/chapter_recurrent-neural-networks/sequence.html
+
 [15] https://uvadlc-notebooks.readthedocs.io/en/latest/tutorial_notebooks/tutorial6/Transformers_and_MHAttention.html
+
 [16] https://arxiv.org/pdf/1810.11921.pdf
+
 [17] https://machinelearningmastery.com/how-to-implement-multi-head-attention-from-scratch-in-tensorflow-and-keras/
+
 [18] https://www.linkedin.com/pulse/sequence-models-in-depth-look-key-algorithms-ritika-dokania-tqzdc
+
 [19] https://www.geeksforgeeks.org/seq2seq-model-in-machine-learning/
+
 [20] https://magazine.sebastianraschka.com/p/understanding-and-coding-self-attention

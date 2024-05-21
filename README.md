@@ -43,7 +43,7 @@ If you use Hydra in your research, please cite our paper:
 - Special thanks to all collaborators and supporters of this project.
 ```
 
-This README template provides a comprehensive overview of the Hydra project, including its purpose, features, installation guide, usage instructions, and how to contribute. It also includes a section for citing the paper if used in academic research, ensuring proper attribution and encouraging academic integrity[1][2][4][6].
+This README template provides a comprehensive overview of the Hydra project, including its purpose, features, installation guide, usage instructions, and how to contribute. It also includes a section for citing the paper[1][2][4][6].
 
 Citations:
 [1] https://everhour.com/blog/github-readme-template/

@@ -1,6 +1,6 @@
 
 ```markdown
-The paper is available [here]([https://docs.google.com/document/d/1DmGQNBh9jcew1GY3s90Thr_0YL1KPrXFgbKyGelzhC4/edit?usp=sharing](https://www.researchgate.net/publication/381009719_Hydra_Enhancing_Machine_Learning_with_a_Multi-head_Predictions_Architecture))
+The paper is available [here]([[https://docs.google.com/document/d/1DmGQNBh9jcew1GY3s90Thr_0YL1KPrXFgbKyGelzhC4/edit?usp=sharing](https://www.researchgate.net/publication/381009719_Hydra_Enhancing_Machine_Learning_with_a_Multi-head_Predictions_Architecture)](https://www.researchgate.net/publication/381009719_Hydra_Enhancing_Machine_Learning_with_a_Multi-head_Predictions_Architecture))
 
 # Hydra: Enhancing Machine Learning with a Multi-head Predictions Architecture
 ## Abstract
